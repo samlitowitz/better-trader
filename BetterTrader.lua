@@ -336,19 +336,30 @@ function BT:DrawButtonsForSpecIDs(...)
 	end
 	table.sort(allCDs, BT.CDSort)
 
+	print("CD Count: " .. allCDsLen)
+
 	-- Resize frame for new icons
 	BT.Frame:SetSize(ICON_WIDTH, allCDsLen * (ICON_HEIGHT + 4))
 
 	-- Build and draw new icons
 	for i, cd in ipairs(allCDs) do
+		local _, _, icon = GetSpellInfo(cd.spellID)
+
+		-- Setup Icon Parent
 		if BT.CDButtons[i] == nil then
 			BT.CDButtons[i] = CreateFrame("Button", nil, BT.Frame)
 		end
 		BT.CDButtons[i]:SetSize(ICON_WIDTH, ICON_HEIGHT)
+
+		-- Icon
 		BT.CDButtons[i].Icon = BT.CDButtons[i]:CreateTexture(nil, "ARTWORK")
+		BT.CDButtons[i].Icon:SetTexture(icon)
 		BT.CDButtons[i].Icon:SetSize(ICON_WIDTH, ICON_HEIGHT)
 		BT.CDButtons[i].Icon:SetPoint("TOPLEFT", 0, 0)
-		--BT.CDButtons[i].Text = BT.CDButtons[i]:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+		-- Text
+		BT.CDButtons[i].Text = BT.CDButtons[i]:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+		BT.CDButtons[i].Text:SetPoint("CENTER", 0, 0)
+		BT.CDButtons[i].Text:SetText(cd.cooldown)
 
 		-- Position icon and show
 		BT.CDButtons[i]:SetPoint("TOPLEFT", 0, i * (ICON_HEIGHT + 4))
@@ -404,8 +415,6 @@ function HandlePlayerTargetChanged(self, event)
 	if not UnitExists("target") then
 		return
 	end
-	local className, classFilename, classID = UnitClass("target")
-
 	if not CheckInteractDistance("target", 1) or not CanInspect("target") then
 		print("Cant check")
 		return
@@ -414,7 +423,6 @@ function HandlePlayerTargetChanged(self, event)
 end
 
 function HandleInspectReady(self, guid)
-	print("inspect ready: " .. guid)
 	local specID = GetInspectSpecialization("target")
 	-- local id, name, _, icon, role, classFile, className = GetSpecializationInfoByID(specID)
 	-- print("[" .. id .. "] " .. name .. " (" .. role .. ", " .. className .. "): ")
