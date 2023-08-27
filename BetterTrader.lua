@@ -316,19 +316,16 @@ local BT = {
 }
 
 BT.Frame = CreateFrame("Frame", nil, UIParent)
-BT.Frame:SetPoint("TOPLEFT", 8, 8)
-BT.Frame:Hide()
+BT.Frame:SetPoint("TOPLEFT",UIParent, 8, -8)
+BT.Frame:Show()
 
 BT.Frame:RegisterEvent("ARENA_OPPONENT_UPDATE")
 BT.Frame:RegisterEvent("ARENA_PREP_OPPONENT_SPECIALIZATIONS")
+BT.Frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-function BT.Frame:OnEvent(event, eventUnit)
-	local unit = self.unit
-	if not eventUnit or eventUnit ~= unit then
-		return
-	end
+BT.Frame:SetScript("OnEvent", function(self, event)
 	BT:ShowArenaCDs()
-end
+end)
 
 function BT:ShowArenaCDs()
 	local _, instanceType = IsInInstance()
@@ -336,7 +333,11 @@ function BT:ShowArenaCDs()
 		BT:HideCDs()
 		return
 	end
-	BT:DrawButtonsForSpecIDs(BT:GetArenaSpecs())
+	local specIDs = BT:GetArenaSpecs()
+	if specIDs == nil then
+		return
+	end
+	BT:DrawButtonsForSpecIDs(unpack(specIDs))
 end
 
 function BT:GetArenaSpecs()
@@ -390,7 +391,7 @@ function BT:DrawButtonsForSpecIDs(...)
 		BT.CDButtons[i].Text:SetText(cd.cooldown)
 
 		-- Position icon and show
-		BT.CDButtons[i]:SetPoint("TOPLEFT", 0, i * (ICON_HEIGHT + 4))
+		BT.CDButtons[i]:SetPoint("TOPLEFT", 0, ICON_HEIGHT - i * (ICON_HEIGHT + 4))
 		BT.CDButtons[i]:Show()
 	end
 end
@@ -415,7 +416,7 @@ end
 
 function BT:CDSort(a, b)
 	if b == nil then
-		return a
+		return true
 	end
 	return a.cooldown < b.cooldown
 end
