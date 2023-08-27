@@ -327,7 +327,7 @@ function BT.Frame:OnEvent(event, eventUnit)
 	if not eventUnit or eventUnit ~= unit then
 		return
 	end
-
+	BT:ShowArenaCDs()
 end
 
 function BT:ShowArenaCDs()
