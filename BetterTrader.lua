@@ -316,7 +316,7 @@ local BT = {
 }
 
 BT.Frame = CreateFrame("Frame", nil, UIParent)
-BT.Frame:SetPoint("LEFT", 4, 0)
+BT.Frame:SetPoint("TOPLEFT", 8, 8)
 BT.Frame:Hide()
 
 BT.Frame:RegisterEvent("ARENA_OPPONENT_UPDATE")
