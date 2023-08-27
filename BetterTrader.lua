@@ -316,7 +316,7 @@ local BT = {
 }
 
 BT.Frame = CreateFrame("Frame", nil, UIParent)
-BT.Frame:SetPoint("CENTERLEFT", 4, 0)
+BT.Frame:SetPoint("LEFT", 4, 0)
 
 function BT:DrawButtonsForSpecIDs(...)
 	local args = {...}
