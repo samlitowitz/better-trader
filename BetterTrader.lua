@@ -5,7 +5,8 @@ local cdsBySpec = {
 	-- -- Frost
 	[251] = {
 		-- Pillar of Frost
-		[51271] = {
+		{
+			spellID = 51271,
 			cooldown = 60,
 			isTargeted = false
 		}
@@ -13,12 +14,14 @@ local cdsBySpec = {
 	-- -- Unholy
 	[252] = {
 		-- Dark Transformation
-		[63560] = {
+		{
+			spellID = 63560,
 			cooldown = 60,
 			isTargeted = false
 		},
 		-- Unholy Assault
-		[207289] = {
+		{
+			spellID = 207289,
 			cooldown = 90,
 			isTargeted = false
 		}
@@ -28,17 +31,20 @@ local cdsBySpec = {
 	-- -- Havoc
 	[577] = {
 		-- Essence Break
-		[258860] = {
+		{
+			spellID = 258860,
 			cooldown = 40,
 			isTargeted = false
 		},
 		-- Metamorphosis
-		[191427] = {
+		{
+			spellID = 191427,
 			cooldown = 240,
 			isTargeted = false
 		},
 		-- The Hunt
-		[370965] = {
+		{
+			spellID = 370965,
 			cooldown = 90,
 			isTargeted = true
 		}
@@ -48,12 +54,14 @@ local cdsBySpec = {
 	-- -- Balance
 	[102] = {
 		-- Incarnation: Chosen of Elune
-		[102560] = {
+		{
+			spellID = 102560,
 			cooldown = 180,
 			isTargeted = false
 		},
 		-- Celestial Alignment
-		[383410] = {
+		{
+			spellID = 383410,
 			cooldown = 180,
 			isTargeted = false
 		}
@@ -61,12 +69,14 @@ local cdsBySpec = {
 	-- -- Feral
 	[103] = {
 		-- Incarnation: King of the Jungle
-		[102543] = {
+		{
+			spellID = 102543,
 			cooldown = 180,
 			isTargeted = false
 		},
 		-- Berserk
-		[106951] = {
+		{
+			spellID = 106951,
 			cooldown = 180,
 			isTargeted = false
 		}
@@ -76,12 +86,14 @@ local cdsBySpec = {
 	-- -- Augmentation
 	[1473] = {
 		-- Tip the Scales
-		[370553] = {
+		{
+			spellID = 370553,
 			cooldown = 120,
 			isTargeted = false
 		},
 		-- Breath of Eons
-		[403631] = {
+		{
+			spellID = 403631,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -89,12 +101,14 @@ local cdsBySpec = {
 	-- -- Devastation
 	[1467] = {
 		-- Tip the Scales
-		[370553] = {
+		{
+			spellID = 370553,
 			cooldown = 120,
 			isTargeted = false
 		},
 		-- Dragonrage
-		[375087] = {
+		{
+			spellID = 375087,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -104,7 +118,8 @@ local cdsBySpec = {
 	-- -- Beast Mastery
 	[253] = {
 		-- Bestial Wrath
-		[19574] = {
+		{
+			spellID = 19574,
 			cooldown = 90,
 			isTargeted = false
 		}
@@ -112,7 +127,8 @@ local cdsBySpec = {
 	-- -- Marksmanship
 	[254] = {
 		-- Trueshot
-		[288613] = {
+		{
+			spellID = 288613,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -120,7 +136,8 @@ local cdsBySpec = {
 	-- -- Survival
 	[255] = {
 		-- Coordinated Assault
-		[360952] = {
+		{
+			spellID = 360952,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -130,7 +147,8 @@ local cdsBySpec = {
 	-- -- Arcane
 	[62] = {
 		-- Arcane Surge
-		[365350] = {
+		{
+			spellID = 365350,
 			cooldown = 90,
 			isTargeted = true
 		}
@@ -138,7 +156,8 @@ local cdsBySpec = {
 	-- -- Fire
 	[63] = {
 		-- Combustion
-		[190319] = {
+		{
+			spellID = 190319,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -146,7 +165,8 @@ local cdsBySpec = {
 	-- -- Frost
 	[64] = {
 		-- Icy Veins
-		[12472] = {
+		{
+			spellID = 12472,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -156,12 +176,14 @@ local cdsBySpec = {
 	-- Windwalker
 	[269] = {
 		-- Invoke Xuen
-		[123904] = {
+		{
+			spellID = 123904,
 			cooldown = 120,
 			isTargeted = false
 		},
 		-- Serenity
-		[152173] = {
+		{
+			spellID = 152173,
 			cooldown = 90,
 			isTargeted = false
 		}
@@ -170,7 +192,8 @@ local cdsBySpec = {
 	-- Paladin
 	-- -- Retribution
 	[70] = {
-		[31884] = {
+		{
+			spellID = 31884,
 			cooldown = 120,
 			isTargeted = false
 		}
@@ -180,12 +203,14 @@ local cdsBySpec = {
 	-- -- Shadow
 	[258] = {
 		-- Dark Ascension
-		[391109] = {
+		{
+			spellID = 391109,
 			cooldown = 60,
 			isTargeted = false
 		},
 		-- Void Eruption
-		[228260] = {
+		{
+			spellID = 228260,
 			cooldown = 120,
 			isTargeted = true
 		}
@@ -195,7 +220,8 @@ local cdsBySpec = {
 	-- -- Assassination
 	[259] = {
 		-- Deathmark
-		[360194] = {
+		{
+			spellID = 360194,
 			cooldown = 120,
 			isTargeted = true
 		}
@@ -203,7 +229,8 @@ local cdsBySpec = {
 	-- -- Outlaw
 	[260] = {
 		-- Adrenaline Rush
-		[13750] = {
+		{
+			spellID = 13750,
 			cooldown = 180,
 			isTargeted = false
 		}
@@ -211,17 +238,20 @@ local cdsBySpec = {
 	-- -- Subtlety
 	[261] = {
 		-- Shadow Dance
-		[185313] = {
+		{
+			spellID = 185313,
 			cooldown = 60,
 			isTargeted = false,
 		},
 		-- Cold Blood
-		[382245] = {
+		{
+			spellID = 382245,
 			cooldown = 45,
 			isTargeted = false
 		},
 		-- Secret Technique
-		[280719] = {
+		{
+			spellID = 280719,
 			cooldown = 60,
 			isTargeted = true
 		}
@@ -231,11 +261,13 @@ local cdsBySpec = {
 	-- -- Elemental
 	[262] = {
 		-- Ascendance/Storm Keeper
-		[114050] = {
+		{
+			spellID = 114050,
 			cooldown = 180,
 			isTargeted = false
 		},
-		[191634] = {
+		{
+			spellID = 191634,
 			cooldown = 60,
 			isTargeted = false
 		}
@@ -243,11 +275,13 @@ local cdsBySpec = {
 	-- -- Enhancement
 	[263] = {
 		-- Ascendance + Doom Winds
-		[114051] = {
+		{
+			spellID = 114051,
 			cooldown = 180,
 			isTargeted = false
 		},
-		[384352] = {
+		{
+			spellID = 384352,
 			cooldown = 90,
 			isTargeted = true
 		}
@@ -257,12 +291,14 @@ local cdsBySpec = {
 	-- -- Afflication
 	[265] = {
 		-- Rapid Contagion
-		[344566] = {
+		{
+			spellID = 344566,
 			cooldown = 30,
 			isTargeted = false
 		},
 		-- Phantom Singularity
-		[205179] = {
+		{
+			spellID = 205179,
 			cooldown = 45,
 			isTargeted = true
 		}
@@ -270,7 +306,8 @@ local cdsBySpec = {
 	-- -- Demonlogy
 	[266] = {
 		-- Summon Demonic Tyrant
-		[265187] = {
+		{
+			spellID = 265187,
 			cooldown = 90,
 			isTargeted = false
 		}
@@ -278,7 +315,8 @@ local cdsBySpec = {
 	-- -- Destruction
 	[267] = {
 		-- Summon Infernal
-		[1122] = {
+		{
+			spellID = 1122,
 			cooldown = 90,
 			isTargeted = false
 		}
@@ -288,11 +326,13 @@ local cdsBySpec = {
 	-- -- Arms
 	[71] = {
 		-- Avatar + Colossus Smash
-		[401150] = {
+		{
+			spellID = 401150,
 			cooldown = 90,
 			isTargeted = false
 		},
-		[167105] = {
+		{
+			spellID = 167105,
 			cooldown = 45,
 			isTargeted = true
 		}
@@ -300,7 +340,8 @@ local cdsBySpec = {
 	-- -- Fury
 	[72] = {
 		-- Avatar
-		[401150] = {
+		{
+			spellID = 401150,
 			cooldown = 90,
 			isTargeted = false
 		}
@@ -316,7 +357,7 @@ local BT = {
 }
 
 BT.Frame = CreateFrame("Frame", nil, UIParent)
-BT.Frame:SetPoint("TOPLEFT",UIParent, 8, -8)
+BT.Frame:SetPoint("TOPLEFT", UIParent, 8, -8)
 BT.Frame:Show()
 
 BT.Frame:RegisterEvent("ARENA_OPPONENT_UPDATE")
@@ -340,32 +381,11 @@ function BT:ShowArenaCDs()
 	BT:DrawButtonsForSpecIDs(unpack(specIDs))
 end
 
-function BT:GetArenaSpecs()
-	local specIDs = {}
-	local numOpps = GetNumArenaOpponentSpecs()
-	for i = 1, numOpps do
-		local specID = GetArenaOpponentSpec(i)
-		if specID > 0 then
-			table.insert(specIDs, specID)
-		end
-	end
-	return specIDs
-end
-
 function BT:DrawButtonsForSpecIDs(...)
-	local args = { ... }
 	BT:HideCDs()
 
-	local allCDs = {}
-	local allCDsLen = 0
-	for _, specID in ipairs(args) do
-		local specCDs = BT:GetSortableListBySpecID(specID)
-		for _, specCD in ipairs(specCDs) do
-			table.insert(allCDs, specCD)
-			allCDsLen = allCDsLen + 1
-		end
-	end
-	table.sort(allCDs, BT.CDSort)
+	local allCDs, allCDsLen = BT:GetCDsForSpecIDs(...)
+	table.sort(allCDs, BT.CompareCD)
 
 	-- Resize frame for new icons
 	BT.Frame:SetSize(ICON_WIDTH, allCDsLen * (ICON_HEIGHT + 4))
@@ -402,21 +422,47 @@ function BT:HideCDs()
 	end
 end
 
-function BT:GetSortableListBySpecID(specID)
+function BT:GetArenaSpecs()
+	local specIDs = {}
+	local numOpps = GetNumArenaOpponentSpecs()
+	for i = 1, numOpps do
+		local specID = GetArenaOpponentSpec(i)
+		if specID > 0 then
+			table.insert(specIDs, specID)
+		end
+	end
+	return specIDs
+end
+
+function BT:GetCDsForSpecIDs(...)
+	local args = { ... }
+	local cds = {}
+	local cdsLen = 0
+	for _, specID in ipairs(args) do
+		local specCDs = BT:GetCDsForSpecID(specID)
+		for _, cd in ipairs(specCDs) do
+			if cd ~= nil then
+				table.insert(cds, cd)
+				cdsLen = cdsLen + 1
+			end
+		end
+	end
+	return cds, cdsLen
+end
+
+function BT:GetCDsForSpecID(specID)
 	if cdsBySpec[specID] == nil then
 		return {}
 	end
-	local sortable = {}
-	for k, v in pairs(cdsBySpec[specID]) do
-		v.spellID = k
-		table.insert(sortable, v)
-	end
-	return sortable
+	return cdsBySpec[specID]
 end
 
-function BT:CDSort(a, b)
-	if b == nil then
+function BT:CompareCD(a, b)
+	if a == nil then
 		return true
 	end
-	return a.cooldown < b.cooldown
+	if b == nil then
+		return false
+	end
+	return a.cooldown <= b.cooldown
 end
