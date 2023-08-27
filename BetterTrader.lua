@@ -1,6 +1,3 @@
--- use GetSpellInfo for name and icons
--- https://wowpedia.fandom.com/wiki/API_GetSpellInfo
--- https://old.reddit.com/r/worldofpvp/comments/15tt3nk/need_help_with_learning_offensive_cds_1_per_spec/
 local cdsBySpec = {
 	-- DK
 	-- -- Blood
@@ -310,8 +307,8 @@ local cdsBySpec = {
 	}
 }
 
-local ICON_HEIGHT = 64
-local ICON_WIDTH = 64
+local ICON_HEIGHT = 48
+local ICON_WIDTH = 48
 
 local BT = {
 	Frame = nil,
@@ -319,7 +316,7 @@ local BT = {
 }
 
 BT.Frame = CreateFrame("Frame", nil, UIParent)
-BT.Frame:SetPoint("CENTER", 0, 0)
+BT.Frame:SetPoint("CENTERLEFT", 4, 0)
 
 function BT:DrawButtonsForSpecIDs(...)
 	local args = {...}
