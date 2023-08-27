@@ -464,5 +464,5 @@ function BT:CompareCD(a, b)
 	if b == nil then
 		return false
 	end
-	return a.cooldown <= b.cooldown
+	return a.cooldown >= b.cooldown
 end
