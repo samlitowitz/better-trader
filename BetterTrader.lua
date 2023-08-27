@@ -322,6 +322,7 @@ BT.Frame = CreateFrame("Frame", nil, UIParent)
 BT.Frame:SetPoint("CENTER", 0, 0)
 
 function BT:DrawButtonsForSpecIDs(...)
+	local args = {...}
 	BT:HideAllCDs()
 
 	local allCDs = {}
