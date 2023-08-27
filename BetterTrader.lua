@@ -385,7 +385,9 @@ function BT:DrawButtonsForSpecIDs(...)
 	BT:HideCDs()
 
 	local allCDs, allCDsLen = BT:GetCDsForSpecIDs(...)
-	table.sort(allCDs, BT.CompareCD)
+	table.sort(allCDs, function(a, b)
+		return a.cooldown > b.cooldown
+	end)
 
 	-- Resize frame for new icons
 	BT.Frame:SetSize(ICON_WIDTH, allCDsLen * (ICON_HEIGHT + 4))
@@ -455,14 +457,4 @@ function BT:GetCDsForSpecID(specID)
 		return {}
 	end
 	return cdsBySpec[specID]
-end
-
-function BT:CompareCD(a, b)
-	if a == nil then
-		return true
-	end
-	if b == nil then
-		return false
-	end
-	return a.cooldown >= b.cooldown
 end
