@@ -386,6 +386,9 @@ function BT:GetSortableListBySpecID(specID)
 end
 
 function BT:CDSort(a, b)
+	if b == nil then
+		return a
+	end
 	return a.cooldown < b.cooldown
 end
 
