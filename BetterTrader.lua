@@ -317,10 +317,43 @@ local BT = {
 
 BT.Frame = CreateFrame("Frame", nil, UIParent)
 BT.Frame:SetPoint("LEFT", 4, 0)
+BT.Frame:Hide()
+
+BT.Frame:RegisterEvent("ARENA_OPPONENT_UPDATE")
+BT.Frame:RegisterEvent("ARENA_PREP_OPPONENT_SPECIALIZATIONS")
+
+function BT.Frame:OnEvent(event, eventUnit)
+	local unit = self.unit
+	if not eventUnit or eventUnit ~= unit then
+		return
+	end
+
+end
+
+function BT:ShowArenaCDs()
+	local _, instanceType = IsInInstance()
+	if instanceType ~= "arena" then
+		BT:HideCDs()
+		return
+	end
+	BT:DrawButtonsForSpecIDs(BT:GetArenaSpecs())
+end
+
+function BT:GetArenaSpecs()
+	local specIDs = {}
+	local numOpps = GetNumArenaOpponentSpecs()
+	for i = 1, numOpps do
+		local specID = GetArenaOpponentSpec(i)
+		if specID > 0 then
+			table.insert(specIDs, specID)
+		end
+	end
+	return specIDs
+end
 
 function BT:DrawButtonsForSpecIDs(...)
-	local args = {...}
-	BT:HideAllCDs()
+	local args = { ... }
+	BT:HideCDs()
 
 	local allCDs = {}
 	local allCDsLen = 0
@@ -332,8 +365,6 @@ function BT:DrawButtonsForSpecIDs(...)
 		end
 	end
 	table.sort(allCDs, BT.CDSort)
-
-	print("CD Count: " .. allCDsLen)
 
 	-- Resize frame for new icons
 	BT.Frame:SetSize(ICON_WIDTH, allCDsLen * (ICON_HEIGHT + 4))
@@ -364,8 +395,8 @@ function BT:DrawButtonsForSpecIDs(...)
 	end
 end
 
-function BT:HideAllCDs()
-	for _,frame in ipairs(BT.CDButtons) do
+function BT:HideCDs()
+	for _, frame in ipairs(BT.CDButtons) do
 		frame:Hide()
 	end
 end
@@ -389,44 +420,44 @@ function BT:CDSort(a, b)
 	return a.cooldown < b.cooldown
 end
 
-local enterWorldFrame = CreateFrame("Frame", nil, UIParent)
-enterWorldFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-enterWorldFrame:SetScript("OnEvent", function(self, event)
-
-	-- Run once per load
-	enterWorldFrame:UnregisterAllEvents()
-end)
+--local enterWorldFrame = CreateFrame("Frame", nil, UIParent)
+--enterWorldFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+--enterWorldFrame:SetScript("OnEvent", function(self, event)
+--
+--	-- Run once per load
+--	enterWorldFrame:UnregisterAllEvents()
+--end)
 
 -- Testing only
-local targetChangedFrame = CreateFrame("Frame", nil, UIParent)
-targetChangedFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
-targetChangedFrame:RegisterEvent("INSPECT_READY")
-targetChangedFrame:SetScript("OnEvent", function(self, event, ...)
-	print("EVENT: " .. event)
-	if event == "PLAYER_TARGET_CHANGED" then
-		return HandlePlayerTargetChanged(self, event)
-	end
-	if event == "INSPECT_READY" then
-		HandleInspectReady(self, ...)
-	end
-end)
-
-function HandlePlayerTargetChanged(self, event)
-	if not UnitExists("target") then
-		return
-	end
-	if not CheckInteractDistance("target", 1) or not CanInspect("target") then
-		print("Cant check")
-		return
-	end
-	NotifyInspect("target");
-end
-
-function HandleInspectReady(self, guid)
-	local specID = GetInspectSpecialization("target")
-	-- local id, name, _, icon, role, classFile, className = GetSpecializationInfoByID(specID)
-	-- print("[" .. id .. "] " .. name .. " (" .. role .. ", " .. className .. "): ")
-	print("SpecID: " .. specID)
-	BT:DrawButtonsForSpecIDs(specID)
-	ClearInspectPlayer()
-end
+--local targetChangedFrame = CreateFrame("Frame", nil, UIParent)
+--targetChangedFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
+--targetChangedFrame:RegisterEvent("INSPECT_READY")
+--targetChangedFrame:SetScript("OnEvent", function(self, event, ...)
+--	print("EVENT: " .. event)
+--	if event == "PLAYER_TARGET_CHANGED" then
+--		return HandlePlayerTargetChanged(self, event)
+--	end
+--	if event == "INSPECT_READY" then
+--		HandleInspectReady(self, ...)
+--	end
+--end)
+--
+--function HandlePlayerTargetChanged(self, event)
+--	if not UnitExists("target") then
+--		return
+--	end
+--	if not CheckInteractDistance("target", 1) or not CanInspect("target") then
+--		print("Cant check")
+--		return
+--	end
+--	NotifyInspect("target");
+--end
+--
+--function HandleInspectReady(self, guid)
+--	local specID = GetInspectSpecialization("target")
+--	-- local id, name, _, icon, role, classFile, className = GetSpecializationInfoByID(specID)
+--	-- print("[" .. id .. "] " .. name .. " (" .. role .. ", " .. className .. "): ")
+--	print("SpecID: " .. specID)
+--	BT:DrawButtonsForSpecIDs(specID)
+--	ClearInspectPlayer()
+--end
