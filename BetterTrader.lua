@@ -8,11 +8,9 @@ local cdsBySpec = {
 	-- -- Frost
 	[251] = {
 		-- Pillar of Frost
-		cooldowns = {
-			[51271] = {
-				cooldown = 60,
-				isTargeted = false
-			}
+		[51271] = {
+			cooldown = 60,
+			isTargeted = false
 		}
 	},
 	-- -- Unholy
@@ -66,6 +64,10 @@ local cdsBySpec = {
 	-- -- Feral
 	[103] = {
 		-- Incarnation: King of the Jungle
+		[102543] = {
+			cooldown = 180,
+			isTargeted = false
+		},
 		-- Berserk
 		[106951] = {
 			cooldown = 180,
@@ -308,6 +310,73 @@ local cdsBySpec = {
 	}
 }
 
+local ICON_HEIGHT = 64
+local ICON_WIDTH = 64
+
+local BT = {
+	Frame = nil,
+	CDButtons = {}
+}
+
+BT.Frame = CreateFrame("Frame", nil, UIParent)
+BT.Frame:SetPoint("CENTER", 0, 0)
+
+function BT:DrawButtonsForSpecIDs(...)
+	BT:HideAllCDs()
+
+	local allCDs = {}
+	local allCDsLen = 0
+	for _, specID in ipairs(args) do
+		local specCDs = BT:GetSortableListBySpecID(specID)
+		for _, specCD in ipairs(specCDs) do
+			table.insert(allCDs, specCD)
+			allCDsLen = allCDsLen + 1
+		end
+	end
+	table.sort(allCDs, BT.CDSort)
+
+	-- Resize frame for new icons
+	BT.Frame:SetSize(ICON_WIDTH, allCDsLen * (ICON_HEIGHT + 4))
+
+	-- Build and draw new icons
+	for i, cd in ipairs(allCDs) do
+		if BT.CDButtons[i] == nil then
+			BT.CDButtons[i] = CreateFrame("Button", nil, BT.Frame)
+		end
+		BT.CDButtons[i]:SetSize(ICON_WIDTH, ICON_HEIGHT)
+		BT.CDButtons[i].Icon = BT.CDButtons[i]:CreateTexture(nil, "ARTWORK")
+		BT.CDButtons[i].Icon:SetSize(ICON_WIDTH, ICON_HEIGHT)
+		BT.CDButtons[i].Icon:SetPoint("TOPLEFT", 0, 0)
+		--BT.CDButtons[i].Text = BT.CDButtons[i]:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+
+		-- Position icon and show
+		BT.CDButtons[i]:SetPoint("TOPLEFT", 0, i * (ICON_HEIGHT + 4))
+		BT.CDButtons[i]:Show()
+	end
+end
+
+function BT:HideAllCDs()
+	for _,frame in ipairs(BT.CDButtons) do
+		frame:Hide()
+	end
+end
+
+function BT:GetSortableListBySpecID(specID)
+	if cdsBySpec[specID] == nil then
+		return {}
+	end
+	local sortable = {}
+	for k, v in pairs(cdsBySpec[specID]) do
+		v.spellID = k
+		table.insert(sortable, v)
+	end
+	return sortable
+end
+
+function BT:CDSort(a, b)
+	return a.cooldown < b.cooldown
+end
+
 local enterWorldFrame = CreateFrame("Frame", nil, UIParent)
 enterWorldFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 enterWorldFrame:SetScript("OnEvent", function(self, event)
@@ -316,6 +385,7 @@ enterWorldFrame:SetScript("OnEvent", function(self, event)
 	enterWorldFrame:UnregisterAllEvents()
 end)
 
+-- Testing only
 local targetChangedFrame = CreateFrame("Frame", nil, UIParent)
 targetChangedFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 targetChangedFrame:RegisterEvent("INSPECT_READY")
@@ -348,5 +418,6 @@ function HandleInspectReady(self, guid)
 	-- local id, name, _, icon, role, classFile, className = GetSpecializationInfoByID(specID)
 	-- print("[" .. id .. "] " .. name .. " (" .. role .. ", " .. className .. "): ")
 	print("SpecID: " .. specID)
+	BT:DrawButtonsForSpecIDs(specID)
 	ClearInspectPlayer()
 end
