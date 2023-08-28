@@ -403,13 +403,19 @@ function BT:DrawButtonsForSpecIDs(...)
 		BT.CDButtons[i]:SetSize(ICON_WIDTH, ICON_HEIGHT)
 
 		-- Icon
-		BT.CDButtons[i].Icon = BT.CDButtons[i]:CreateTexture(nil, "ARTWORK")
+		if BT.CDButtons[i].Icon == nil then
+			BT.CDButtons[i].Icon = BT.CDButtons[i]:CreateTexture(nil, "ARTWORK")
+		end
+		BT.CDButtons[i].Icon:SetTexture(nil)
 		BT.CDButtons[i].Icon:SetTexture(icon)
 		BT.CDButtons[i].Icon:SetSize(ICON_WIDTH, ICON_HEIGHT)
 		BT.CDButtons[i].Icon:SetPoint("TOPLEFT", 0, 0)
 		-- Text
-		BT.CDButtons[i].Text = BT.CDButtons[i]:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+		if BT.CDButtons[i].Text == nil then
+			BT.CDButtons[i].Text = BT.CDButtons[i]:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+		end
 		BT.CDButtons[i].Text:SetPoint("CENTER", 0, 0)
+		BT.CDButtons[i].Text:SetText("")
 		BT.CDButtons[i].Text:SetText(cd.cooldown)
 
 		-- Position icon and show
