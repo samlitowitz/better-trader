@@ -1,20 +1,36 @@
 local addonName, addon = ...
 
-BetterTrader = LibStub("AceAddon-3.0"):NewAddon("BetterTrader")
-AceConsole = LibStub("AceConsole-3.0")
+BetterTrader = LibStub("AceAddon-3.0"):NewAddon(addon.NAME)
+
+local DB_VERSION = 1
 
 function BetterTrader:Print(...)
-	AceConsole:Print(DEFAULT_CHAT_FRAME, "|c000000ffBetterTrader|r:", ...)
+	self.console:Print(DEFAULT_CHAT_FRAME, "|c000000ff" .. addon.NAME .. "|r:", ...)
 end
 
 function BetterTrader:OnInitialize()
-	BetterTrader:Print("Initialized")
+	self.console = LibStub("AceConsole-3.0")
+	self.db = LibStub("AceDB-3.0"):New("BetterTraderDB", {
+		global = { version = DB_VERSION },
+		profile = { }
+	}, true)
+
+	self.version = { string = GetAddonMetadata(addonName, "Version") or "" }
+	self.version.major, self.version.minor = self.version.string:match("(%d+)%.(%d+)")
+
+	self.version.major = tonumber(self.version.major)
+	self.version.minor = tonumber(self.version.minor)
+
+	self:SetupOptions()
+
+	self:Print("Initialized")
+	self:Print("Addon Name: " .. addonName)
 end
 
 function BetterTrader:OnEnable()
-	BetterTrader:Print("Enabled")
+	self:Print("Enabled")
 end
 
 function BetterTrader:OnDisable()
-	BetterTrader:Print("Disabled")
+	self:Print("Disabled")
 end

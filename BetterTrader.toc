@@ -9,4 +9,6 @@
 
 embeds.xml
 
+Constants.lua
 BetterTrader.lua
+Options.lua

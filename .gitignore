@@ -3,5 +3,6 @@
 !.editorconfig
 !.gitattributes
 !.gitignore
+!.luacheckrc
 
 Ace3/

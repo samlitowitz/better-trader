@@ -2,6 +2,9 @@
 2. offensive and defensive cds/cd customizable by spec
 3. test mode
 
+offensive cd > [defensive cd]
+
+
 track active offensive cd's, show corresponding defensive cds to use (match based on cooldown length and availability, is it off cd)
 match for you
 from prepared list (you build it this shows it)
