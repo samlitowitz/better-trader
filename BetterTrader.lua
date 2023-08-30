@@ -4,7 +4,7 @@ BetterTrader = LibStub("AceAddon-3.0"):NewAddon("BetterTrader")
 AceConsole = LibStub("AceConsole-3.0")
 
 function BetterTrader:Print(...)
-	AceConsole:Print(DEFAULT_CHAT_FRAME, "|c0000ffBetterTrader|r:", ...)
+	AceConsole:Print(DEFAULT_CHAT_FRAME, "|c000000ffBetterTrader|r:", ...)
 end
 
 function BetterTrader:OnInitialize()
