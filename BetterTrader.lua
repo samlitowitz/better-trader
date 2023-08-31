@@ -17,7 +17,7 @@ function BetterTrader:OnInitialize()
 		profile = { }
 	}, true)
 
-	self.author = { string = GetAddOnMetadata(addonName, "Author") or "" }
+	self.author = GetAddOnMetadata(addonName, "Author") or ""
 	self.version = { string = GetAddOnMetadata(addonName, "Version") or "" }
 	self.version.major, self.version.minor = self.version.string:match("(%d+)%.(%d+)")
 
