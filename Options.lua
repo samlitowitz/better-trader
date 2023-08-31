@@ -1,6 +1,6 @@
 local addonName, addon = ...
 
-local BetterTrader = LibStub("AceAddon-3.0"):GetAddon("Bet")
+local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
 
 function BetterTrader:SetupOptions()
 	self.options = {
