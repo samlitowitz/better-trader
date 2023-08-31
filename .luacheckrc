@@ -6,7 +6,7 @@ exclude_files = {
 }
 read_globals = {
 	"DEFAULT_CHAT_FRAME",
-	"GetAddonMetadata",
+	"GetAddOnMetadata",
 	"LibStub",
 }
 globals = {

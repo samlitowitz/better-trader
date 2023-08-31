@@ -1,5 +1,7 @@
 local addonName, addon = ...
 
+local GetAddOnMetadata = GetAddOnMetadata
+
 BetterTrader = LibStub("AceAddon-3.0"):NewAddon(addon.NAME)
 
 local DB_VERSION = 1
@@ -15,7 +17,7 @@ function BetterTrader:OnInitialize()
 		profile = { }
 	}, true)
 
-	self.version = { string = GetAddonMetadata(addonName, "Version") or "" }
+	self.version = { string = GetAddOnMetadata(addonName, "Version") or "" }
 	self.version.major, self.version.minor = self.version.string:match("(%d+)%.(%d+)")
 
 	self.version.major = tonumber(self.version.major)
