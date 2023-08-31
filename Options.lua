@@ -7,7 +7,26 @@ function BetterTrader:SetupOptions()
 		name = addon.NAME,
 		descStyle = "inline",
 		type = "group",
-		args = {},
+		plugins = {
+			profiles = {
+				profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db),
+			}
+		},
+		childGroups = "tab",
+		args = {
+			version = {
+				order = 1,
+				type = "description",
+				name = "Version: " .. self.version.string .. "\n",
+				cmdHidden = true,
+			},
+			author = {
+				order = 2,
+				type = "description",
+				name = "Author: " .. self.author .. "\n",
+				cmdHidden = true,
+			}
+		},
 	}
 	LibStub("AceConfig-3.0"):RegisterOptionsTable(addon.NAME, self.options)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addon.NAME, addon.NAME)
