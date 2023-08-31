@@ -20,3 +20,4 @@ This is big WIP, subject to change at any time
 2. https://wowpedia.fandom.com/wiki/World_of_Warcraft_API
 3. https://www.townlong-yak.com/framexml/live/Blizzard_APIDocumentation
 4. https://www.wowace.com/projects/ace3/pages/getting-started
+5. https://wowpedia.fandom.com/wiki/SpecializationID

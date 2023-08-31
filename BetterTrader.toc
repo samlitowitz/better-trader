@@ -10,5 +10,6 @@
 embeds.xml
 
 Constants.lua
+Cooldowns.lua
 BetterTrader.lua
 Options.lua
