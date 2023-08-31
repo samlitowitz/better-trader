@@ -1,7 +1,7 @@
 ## Interface: 100105
 ## Title: BetterTrader
 ## Notes: Trade better with BetterTrader
-## Version: 3.0.10
+## Version: 0.0.1-alpha
 ## Author: Sam
 ## SavedVariables: BetterTraderDB
 ## X-Category: UI
