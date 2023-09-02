@@ -73,6 +73,7 @@ function BetterTrader:SetupOptions()
 						sorting = typeListOrder,
 					},
 					cooldownList = {
+						name = nop,
 						type = "group",
 						order = 3,
 						args = GetCooldownList(),
@@ -117,7 +118,7 @@ function GetCooldownList()
 							cooldown = SecondsToTime(spell.cooldown_in_seconds)
 						end
 						local spellDesc = descriptions[spellID] or ""
-						return strings.format(
+						return format(
 							"%s\n\n|cffffd700 Spell ID|r %d\n\n|cffffd700 Cooldown|r %d",
 							spellDesc,
 							spellID,
