@@ -3,12 +3,25 @@ local _, addon = ...
 local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
 
 function BetterTrader:SetupOptions()
-	local classList = {}
-	local classListOrder = {}
-	for k,v in pairs(addon.ClassIDsByClassNameMap) do
+	local classList = {
+		[0] = "All"
+	}
+	local classListOrder = {
+		0,
+	}
+	for k, v in pairs(addon.ClassIDsByClassNameMap) do
 		classList[v] = k
 		table.insert(classListOrder, v)
 	end
+
+	local typeList = {
+		DEFENSIVE = "Defensive",
+		OFFENSIVE = "Offensive",
+	}
+	local typeListOrder = {
+		DEFENSIVE,
+		OFFENSIVE,
+	}
 
 	self.options = {
 		name = addon.NAME,
@@ -39,16 +52,21 @@ function BetterTrader:SetupOptions()
 				order = 3,
 				childGroups = "tab",
 				args = {
-					-- class filter
 					classFilter = {
 						name = "Class Filter",
 						type = "select",
 						order = 1,
 						values = classList,
 						sorting = classListOrder,
-					}
+					},
 					-- spec filter?
-					-- offensive/defensive filter
+					typeFilter = {
+						name = "Type Filter",
+						type = "select",
+						order = 2,
+						values = typeList,
+						sorting = typeListOrder,
+					}
 				},
 			},
 			test = {
