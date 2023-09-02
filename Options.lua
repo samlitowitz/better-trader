@@ -139,9 +139,9 @@ end
 local function getSetDebug(info, ...)
 	local args = {...}
 	for k,v in pairs(info) do
-		BetterTrader:print(k .. ": " .. v)
+		BetterTrader:Print(k .. ": " .. v)
 	end
 	for i,v in ipairs(args) do
-		BetterTrader:print(i .. ": " .. v)
+		BetterTrader:Print(i .. ": " .. v)
 	end
 end
