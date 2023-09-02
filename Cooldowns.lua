@@ -1,14 +1,10 @@
-local addonName, addon = ...
-
--- [spelldID] = {isOffensive, isDefensive, duration, charges, class, cooldown}
-
-
+local _, addon = ...
 
 addon.Cooldowns = {
 	-- Death Knight
-	-- Blood
-	-- Frost
-	-- Icebound Fortitude
+	-- -- Blood
+	-- -- Frost
+	-- -- -- Icebound Fortitude
 	[48792] = {
 		isDefensive = true,
 		isOffensive = false,
@@ -16,7 +12,7 @@ addon.Cooldowns = {
 		specID = addon.SpecIDs.FROST,
 		damageType = addon.DamageTypes.ALL,
 	},
-	-- Pillar of Frost
+	-- -- -- Pillar of Frost
 	[51271] = {
 		isDefensive = false,
 		isOffensive = true,
@@ -24,5 +20,5 @@ addon.Cooldowns = {
 		specID = addon.SpecIDs.FROST,
 		damageType = Bit.bit32.bor(addon.DamageTypes.PHYSICAL, addon.DamageTypes.FROST),
 	}
-	-- Unholy
+	-- -- Unholy
 }
