@@ -7,7 +7,7 @@ function BetterTrader:SetupOptions()
 	local classListOrder = {}
 	for k,v in pairs(addon.ClassIDsByClassNameMap) do
 		classList[v] = k
-		classListOrder = v
+		table.insert(classListOrder, v)
 	end
 
 	self.options = {
