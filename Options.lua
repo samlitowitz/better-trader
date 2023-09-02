@@ -111,16 +111,16 @@ function GetCooldownList()
 				hidden = nop,
 				arg = spellID,
 				desc = function()
-					local cooldown = -1
-					if type(spell.cooldown_in_seconds) == "number" and spell.cooldown_in_seconds then
-						cooldown = SecondsToTime(spell.cooldown_in_seconds)
+					local cooldown_seconds = -1
+					if type(spell.cooldown_seconds) == "number" and spell.cooldown_seconds then
+						cooldown_seconds = SecondsToTime(spell.cooldown_seconds)
 					end
 					local spellDesc = descriptions[spellID] or ""
 					return format(
 						"%s\n\n|cffffd700 Spell ID|r %d\n\n|cffffd700 Cooldown|r %d",
 						spellDesc,
 						spellID,
-						cooldown
+						cooldown_seconds
 					)
 				end,
 				name = function()
