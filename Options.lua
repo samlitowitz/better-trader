@@ -105,31 +105,28 @@ function GetCooldownList()
 			s:ContinueOnSpellLoad(function()
 				descriptions[spellID] = s:GetSpellDescription()
 			end)
-			table.insert(
-				cooldowns,
-				{
-					type = "toggle",
-					width = "full",
-					hidden = nop,
-					arg = spellID,
-					desc = function()
-						local cooldown = -1
-						if type(spell.cooldown_in_seconds) == "number" and spell.cooldown_in_seconds then
-							cooldown = SecondsToTime(spell.cooldown_in_seconds)
-						end
-						local spellDesc = descriptions[spellID] or ""
-						return format(
-							"%s\n\n|cffffd700 Spell ID|r %d\n\n|cffffd700 Cooldown|r %d",
-							spellDesc,
-							spellID,
-							cooldown
-						)
-					end,
-					name = function()
-						return format("|T%s:20|t %s", spellTexture, spellName)
+			cooldowns[tostring(spellID)] = {
+				type = "toggle",
+				width = "full",
+				hidden = nop,
+				arg = spellID,
+				desc = function()
+					local cooldown = -1
+					if type(spell.cooldown_in_seconds) == "number" and spell.cooldown_in_seconds then
+						cooldown = SecondsToTime(spell.cooldown_in_seconds)
 					end
-				}
-			)
+					local spellDesc = descriptions[spellID] or ""
+					return format(
+						"%s\n\n|cffffd700 Spell ID|r %d\n\n|cffffd700 Cooldown|r %d",
+						spellDesc,
+						spellID,
+						cooldown
+					)
+				end,
+				name = function()
+					return format("|T%s:20|t %s", spellTexture, spellName)
+				end
+			}
 		end
 	end
 	return cooldowns
