@@ -72,11 +72,11 @@ function BetterTrader:SetupOptions()
 						values = typeList,
 						sorting = typeListOrder,
 					},
-					cooldownList = {
-						name = nop,
+					spellList = {
+						name = "Spells",
 						type = "group",
 						order = 3,
-						args = GetCooldownList(),
+						args = GetSpellList(),
 					}
 				},
 			},
@@ -93,7 +93,7 @@ function BetterTrader:SetupOptions()
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addon.NAME, addon.NAME)
 end
 
-function GetCooldownList()
+function GetSpellList()
 	local cooldowns = {}
 	local descriptions = {}
 
