@@ -63,6 +63,7 @@ function BetterTrader:SetupOptions()
 						order = 1,
 						values = classList,
 						sorting = classListOrder,
+						set = getSetDebug,
 					},
 					-- spec filter?
 					typeFilter = {
@@ -71,6 +72,7 @@ function BetterTrader:SetupOptions()
 						order = 2,
 						values = typeList,
 						sorting = typeListOrder,
+						set = getSetDebug,
 					},
 					spellList = {
 						name = "Spells",
@@ -110,6 +112,8 @@ function GetSpellList()
 				width = "full",
 				hidden = nop,
 				arg = spellID,
+				get = getSetDebug,
+				set = getSetDebug,
 				desc = function()
 					local cooldown_seconds = "unknown"
 					if type(spell.cooldown_seconds) == "number" and spell.cooldown_seconds then
@@ -130,4 +134,14 @@ function GetSpellList()
 		end
 	end
 	return cooldowns
+end
+
+local function getSetDebug(info, ...)
+	local args = {...}
+	for k,v in pairs(info) do
+		BetterTrader:print(k .. ": " .. v)
+	end
+	for i,v in ipairs(args) do
+		BetterTrader:print(i .. ": " .. v)
+	end
 end
