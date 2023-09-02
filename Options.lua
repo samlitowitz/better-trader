@@ -25,6 +25,13 @@ function BetterTrader:SetupOptions()
 				type = "description",
 				name = "Author: " .. self.author .. "\n",
 				cmdHidden = true,
+			},
+			settings = {
+				name = "Settings",
+				type = "group",
+				order = 3,
+				childGroups = "tab",
+				args = {}
 			}
 		},
 	}
