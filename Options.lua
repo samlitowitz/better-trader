@@ -3,6 +3,13 @@ local _, addon = ...
 local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
 
 function BetterTrader:SetupOptions()
+	local classList = {}
+	local classListOrder = {}
+	for k,v in pairs(addon.ClassNames) do
+		classList[v] = k
+		classListOrder = k
+	end
+
 	self.options = {
 		name = addon.NAME,
 		descStyle = "inline",
@@ -31,7 +38,18 @@ function BetterTrader:SetupOptions()
 				type = "group",
 				order = 3,
 				childGroups = "tab",
-				args = {},
+				args = {
+					-- class filter
+					classFilter = {
+						name = "Class Filter",
+						type = "select",
+						order = 1,
+						values = classList,
+						sorting = classListOrder,
+					}
+					-- spec filter?
+					-- offensive/defensive filter
+				},
 			},
 			test = {
 				name = "Test",
