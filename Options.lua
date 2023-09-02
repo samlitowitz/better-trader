@@ -90,7 +90,14 @@ function BetterTrader:SetupOptions()
 				type = "group",
 				order = 4,
 				childGroups = "tab",
-				args = {},
+				args = {
+					spellList = {
+						name = "Spells",
+						type = "group",
+						order = 3,
+						args = GetSpellList(),
+					}
+				},
 			}
 		},
 	}
@@ -98,7 +105,7 @@ function BetterTrader:SetupOptions()
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addon.NAME, addon.NAME)
 end
 
-function GetSpellList()
+function GetSpellList(classID, specID, isDefensive, isOffensive)
 	local spells = {}
 	local descriptions = {}
 
@@ -143,4 +150,35 @@ function GetSpellList()
 	return spells
 end
 
+function GetSpell(spellID, spell, classID, specID, isDefensive, isOffensive)
+	if spellID == nil then
+		return nil
+	end
+	if spell == nil then
+		return nil
+	end
+	if classID ~= nil then
+		classID = tonumber(classID)
+	end
+	if spell.classID ~= classID then
+		return nil
+	end
+	if specID ~= nil then
+		specID = tonumber(specID)
+	end
+	if spell.specID ~= specID then
+		return nil
+	end
 
+	if spell.isDefensive and spell.isDefensive ~= isDefensive then
+		return nil
+	end
+	if spell.isOffensive and spell.isOffensive ~= isOffensive then
+		return nil
+	end
+
+	local spellName = GetSpellInfo(spellID)
+	if spellName == nil then
+		return nil
+	end
+	end
