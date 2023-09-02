@@ -26,12 +26,19 @@ function BetterTrader:SetupOptions()
 				name = "Author: " .. self.author .. "\n",
 				cmdHidden = true,
 			},
-			settings = {
-				name = "Settings",
+			cooldowns = {
+				name = "Cooldowns",
 				type = "group",
 				order = 3,
 				childGroups = "tab",
-				args = {}
+				args = {},
+			},
+			test = {
+				name = "Test",
+				type = "group",
+				order = 4,
+				childGroups = "tab",
+				args = {},
 			}
 		},
 	}
