@@ -9,7 +9,12 @@ read_globals = {
 	"Bit",
 	"DEFAULT_CHAT_FRAME",
 	"GetAddOnMetadata",
+	"GetSpellDescription",
+	"GetSpellTexture",
 	"LibStub",
+	"nop",
+	"SecondsToTime",
+	"Spell",
 }
 globals = {
 	"BetterTrader",

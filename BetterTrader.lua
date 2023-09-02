@@ -1,6 +1,7 @@
 local addonName, addon = ...
 
 local GetAddOnMetadata = GetAddOnMetadata
+local GetSpellTexture = GetSpellTexture
 
 BetterTrader = LibStub("AceAddon-3.0"):NewAddon(addon.NAME)
 
@@ -36,4 +37,12 @@ end
 
 function BetterTrader:OnDisable()
 	self:Print("Disabled")
+end
+
+function BetterTrader:GetSpellTexture(spellID)
+	spellID = tonumber(spellID)
+	if addon.Cooldowns[spellID] and addon.Cooldowns[spellID].icon then
+		return addon.Cooldowns[spellID].icon
+	end
+	return GetSpellTexture(spellID)
 end

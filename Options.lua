@@ -1,6 +1,10 @@
 local _, addon = ...
 
 local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
+local GetSpellDescription = GetSpellDescription
+local SecondsToTime = SecondsToTime
+local Spell = Spell
+local nop = nop
 
 function BetterTrader:SetupOptions()
 	local classList = {
@@ -66,6 +70,11 @@ function BetterTrader:SetupOptions()
 						order = 2,
 						values = typeList,
 						sorting = typeListOrder,
+					},
+					cooldownList = {
+						type = "group",
+						order = 3,
+						args = GetCooldownList(),
 					}
 				},
 			},
@@ -80,4 +89,46 @@ function BetterTrader:SetupOptions()
 	}
 	LibStub("AceConfig-3.0"):RegisterOptionsTable(addon.NAME, self.options)
 	LibStub("AceConfigDialog-3.0"):AddToBlizOptions(addon.NAME, addon.NAME)
+end
+
+function GetCooldownList()
+	local cooldowns = {}
+	local descriptions = {}
+
+	for spellID, spell in pairs(addon.Cooldowns) do
+		local spellName = GetSpellInfor(spellID)
+		if spellName then
+			local spellTexture = BetterTrader:GetSpellTexture(spellID) or ""
+			local s = Spell:CreateFromSpellID(spellID)
+			s:ContinueOnSpellLoad(function()
+				descriptions[spellID] = s:GetSpellDescription()
+			end)
+			table.insert(
+				cooldowns,
+				{
+					type = "toggle",
+					width = "full",
+					hidden = nop,
+					arg = spellID,
+					desc = function()
+						local cooldown = -1
+						if type(spell.cooldown_in_seconds) == "number" and spell.cooldown_in_seconds then
+							cooldown = SecondsToTime(spell.cooldown_in_seconds)
+						end
+						local spellDesc = descriptions[spellID] or ""
+						return strings.format(
+							"%s\n\n|cffffd700 Spell ID|r %d\n\n|cffffd700 Cooldown|r %d",
+							spellDesc,
+							spellID,
+							cooldown
+						)
+					end,
+					name = function()
+						return string.format("|T%s:20|t %s", spellTexture, spellName)
+					end
+				}
+			)
+		end
+	end
+	return cooldowns
 end
