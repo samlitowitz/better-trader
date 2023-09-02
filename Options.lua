@@ -7,6 +7,16 @@ local Spell = Spell
 local format = format
 local nop = nop
 
+local function getSetDebug(info, ...)
+	local args = {...}
+	for k,v in pairs(info) do
+		BetterTrader:Print(k .. ": " .. v)
+	end
+	for i,v in ipairs(args) do
+		BetterTrader:Print(i .. ": " .. v)
+	end
+end
+
 function BetterTrader:SetupOptions()
 	local classList = {
 		[0] = "All"
@@ -72,7 +82,7 @@ function BetterTrader:SetupOptions()
 						order = 2,
 						values = typeList,
 						sorting = typeListOrder,
-						set = getSetDebug,
+						--set = getSetDebug,
 					},
 					spellList = {
 						name = "Spells",
@@ -136,12 +146,4 @@ function GetSpellList()
 	return cooldowns
 end
 
-local function getSetDebug(info, ...)
-	local args = {...}
-	for k,v in pairs(info) do
-		BetterTrader:Print(k .. ": " .. v)
-	end
-	for i,v in ipairs(args) do
-		BetterTrader:Print(i .. ": " .. v)
-	end
-end
+
