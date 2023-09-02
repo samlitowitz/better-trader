@@ -19,7 +19,7 @@ addon.ClassIDs = {
 	EVOKER = 13,
 }
 
-addon.ClassNames = {
+addon.ClassIDsByClassNameMap = {
 	["Death Knight"] = addon.ClassIDs.DEATH_KNIGHT,
 	["Demon Hunter"] = addon.ClassIDs.DEMON_HUNTER,
 	["Druid"] = addon.ClassIDs.DRUID,
