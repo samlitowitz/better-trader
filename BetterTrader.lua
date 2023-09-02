@@ -75,8 +75,8 @@ end
 
 function BetterTrader:GetSpellTexture(spellID)
 	spellID = tonumber(spellID)
-	if addon.Cooldowns[spellID] and addon.Cooldowns[spellID].icon then
-		return addon.Cooldowns[spellID].icon
+	if addon.Spells[spellID] and addon.Spells[spellID].icon then
+		return addon.Spells[spellID].icon
 	end
 	return GetSpellTexture(spellID)
 end

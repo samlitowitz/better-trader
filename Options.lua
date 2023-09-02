@@ -29,8 +29,8 @@ function BetterTrader:SetupOptions()
 		OFFENSIVE = "Offensive",
 	}
 	local typeListOrder = {
-		DEFENSIVE,
-		OFFENSIVE,
+		"DEFENSIVE",
+		"OFFENSIVE",
 	}
 
 	self.options = {
@@ -77,7 +77,6 @@ function BetterTrader:SetupOptions()
 						order = 2,
 						values = typeList,
 						sorting = typeListOrder,
-						--set = getSetDebug,
 					},
 					spellList = {
 						name = "Spells",
@@ -101,10 +100,10 @@ function BetterTrader:SetupOptions()
 end
 
 function GetSpellList()
-	local cooldowns = {}
+	local spells = {}
 	local descriptions = {}
 
-	for spellID, spell in pairs(addon.Cooldowns) do
+	for spellID, spell in pairs(addon.Spells) do
 		local spellName = GetSpellInfo(spellID)
 		if spellName then
 			local spellTexture = BetterTrader:GetSpellTexture(spellID) or ""
@@ -112,7 +111,7 @@ function GetSpellList()
 			s:ContinueOnSpellLoad(function()
 				descriptions[spellID] = s:GetSpellDescription()
 			end)
-			cooldowns[tostring(spellID)] = {
+			spells[tostring(spellID)] = {
 				type = "toggle",
 				width = "full",
 				hidden = nop,
@@ -138,7 +137,7 @@ function GetSpellList()
 			}
 		end
 	end
-	return cooldowns
+	return spells
 end
 
 

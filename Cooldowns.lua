@@ -1,6 +1,6 @@
 local _, addon = ...
 
-addon.Cooldowns = {
+addon.Spells = {
 	-- Death Knight
 	-- -- Blood
 	-- -- Frost
