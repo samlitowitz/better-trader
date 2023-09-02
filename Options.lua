@@ -5,9 +5,9 @@ local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
 function BetterTrader:SetupOptions()
 	local classList = {}
 	local classListOrder = {}
-	for k,v in pairs(addon.ClassNames) do
+	for k,v in pairs(addon.ClassIDsByClassNameMap) do
 		classList[v] = k
-		classListOrder = k
+		classListOrder = v
 	end
 
 	self.options = {
