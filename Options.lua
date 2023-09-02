@@ -96,7 +96,7 @@ function GetCooldownList()
 	local descriptions = {}
 
 	for spellID, spell in pairs(addon.Cooldowns) do
-		local spellName = GetSpellInfor(spellID)
+		local spellName = GetSpellInfo(spellID)
 		if spellName then
 			local spellTexture = BetterTrader:GetSpellTexture(spellID) or ""
 			local s = Spell:CreateFromSpellID(spellID)
