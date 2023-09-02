@@ -6,12 +6,6 @@ local Spell = Spell
 local format = format
 local nop = nop
 
-local function getSetDebug(info, ...)
-	local args = {...}
-	BetterTrader:Print(BetterTrader:ToString(info))
-	BetterTrader:Print(BetterTrader:ToString(args))
-end
-
 function BetterTrader:SetupOptions()
 	local classList = {
 		[0] = "All"
@@ -68,7 +62,9 @@ function BetterTrader:SetupOptions()
 						order = 1,
 						values = classList,
 						sorting = classListOrder,
-						set = getSetDebug,
+						set = function(info, classID)
+
+						end,
 					},
 					-- spec filter?
 					typeFilter = {
@@ -77,6 +73,9 @@ function BetterTrader:SetupOptions()
 						order = 2,
 						values = typeList,
 						sorting = typeListOrder,
+						set = function(info, type)
+
+						end
 					},
 					spellList = {
 						name = "Spells",
@@ -116,8 +115,12 @@ function GetSpellList()
 				width = "full",
 				hidden = nop,
 				arg = spellID,
-				get = getSetDebug,
-				set = getSetDebug,
+				get = function(info, spellID)
+
+				end,
+				set = function(info, spellID)
+
+				end,
 				desc = function()
 					local cooldown_seconds = "unknown"
 					if type(spell.cooldown_seconds) == "number" and spell.cooldown_seconds then
