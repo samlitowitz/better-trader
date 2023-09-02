@@ -8,6 +8,7 @@ exclude_files = {
 read_globals = {
 	"Bit",
 	"DEFAULT_CHAT_FRAME",
+	"format",
 	"GetAddOnMetadata",
 	"GetSpellDescription",
 	"GetSpellTexture",

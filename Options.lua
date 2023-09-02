@@ -4,6 +4,7 @@ local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
 local GetSpellDescription = GetSpellDescription
 local SecondsToTime = SecondsToTime
 local Spell = Spell
+local format = format
 local nop = nop
 
 function BetterTrader:SetupOptions()
@@ -124,7 +125,7 @@ function GetCooldownList()
 						)
 					end,
 					name = function()
-						return string.format("|T%s:20|t %s", spellTexture, spellName)
+						return format("|T%s:20|t %s", spellTexture, spellName)
 					end
 				}
 			)
