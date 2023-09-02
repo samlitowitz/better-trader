@@ -1,7 +1,6 @@
 local _, addon = ...
 
 local BetterTrader = LibStub("AceAddon-3.0"):GetAddon(addon.NAME)
-local GetSpellDescription = GetSpellDescription
 local SecondsToTime = SecondsToTime
 local Spell = Spell
 local format = format
@@ -9,12 +8,8 @@ local nop = nop
 
 local function getSetDebug(info, ...)
 	local args = {...}
-	for k,v in pairs(info) do
-		BetterTrader:Print(k .. ": " .. v)
-	end
-	for i,v in ipairs(args) do
-		BetterTrader:Print(i .. ": " .. v)
-	end
+	BetterTrader:Print(BetterTrader:ToString(info))
+	BetterTrader:Print(BetterTrader:ToString(args))
 end
 
 function BetterTrader:SetupOptions()

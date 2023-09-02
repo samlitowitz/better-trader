@@ -10,7 +10,6 @@ read_globals = {
 	"DEFAULT_CHAT_FRAME",
 	"format",
 	"GetAddOnMetadata",
-	"GetSpellDescription",
 	"GetSpellTexture",
 	"LibStub",
 	"nop",
